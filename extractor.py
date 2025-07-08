@@ -33,8 +33,8 @@ def get_leetcode_question(title_slug: str):
             "code": question_data.Code
 
         }
-        #solution = GenerateCodeStub(title_slug, question_info['question_id'])
-        #solution_data = solution.generate()
+        solution = GenerateCodeStub(title_slug, question_info['question_id'])
+        solution_data = solution.generate()
         # print(solution_data)
         return question_info
 
