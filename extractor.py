@@ -26,15 +26,36 @@ def get_leetcode_question(title_slug: str):
 
         # Construct result
         question_info = {
+            "title_slug": title_slug,
             "title": question_data.title,
             "question_id": question_data.QID,
             "difficulty": question_data.difficulty,
             "content_html": question_data.Body,
-            "code": question_data.Code
+            "code": question_data.Code,
 
         }
         solution = GenerateCodeStub(title_slug, question_info['question_id'])
-        solution_data = solution.generate()
+        code_stub = solution._get_code_stub()
+        problem_statement = solution._get_problem_statement()
+        problem_statement_code_blocks = solution._extract_codeblocks_in_problem_statement(
+            problem_statement
+        )
+        input_string, output_string = solution._get_parameters(problem_statement_code_blocks)
+        question_info = {
+            "title_slug": title_slug,
+            "title": question_data.title,
+            "question_id": question_data.QID,
+            "difficulty": question_data.difficulty,
+            "content_html": question_data.Body,
+            "code": question_data.Code,
+            "test_cases": input_string,
+            "parameter_map": output_string
+
+        }
+        # print(solution._extract_codeblocks_in_problem_statement(code_stub))
+
+
+        #solution_data = solution.generate()
         # print(solution_data)
         return question_info
 
@@ -49,4 +70,4 @@ if __name__ == "__main__":
     question_data = get_leetcode_question(two_sum_slug)
 
     if question_data:
-        print(json.dumps(question_data, indent=2))
+        q = json.dumps(question_data, indent=2)

@@ -28,7 +28,7 @@ class GetQuestionsList:
         limit (int, optional): The maximum number of questions to query for from Leetcode's graphql API. Defaults to 10,000.
     """
 
-    def __init__(self, limit: int = 10_000):
+    def __init__(self, limit: int = 100):
         self.limit = limit
         self.questions = pd.DataFrame()
         self.companies = pd.DataFrame()
@@ -232,7 +232,7 @@ class GetQuestionsList:
 if __name__ == "__main__":
     # 1. Instantiate the scraper. A smaller limit is used for a quick demo.
     print("Initializing LeetCode scraper...")
-    leetcode_scraper = GetQuestionsList(limit=100)
+    leetcode_scraper = GetQuestionsList(limit=1)
 
     # 2. Call the main 'scrape' method to fetch and process all data.
     leetcode_scraper.scrape()
