@@ -137,44 +137,21 @@ class LeetCodeDB:
 # --- Example Usage ---
 
 if __name__ == '__main__':
-    # The dictionary containing the LeetCode problem data
-    problem_to_add = {
-        "title_slug": "two-sum",
-        "title": "Two Sum",
-        "question_id": 1,
-        "difficulty": "Easy",
-        "content_html": "<p>Given an array of integers...</p>",
-        "code": "class Solution:\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\n        "
-    }
 
     # 1. Initialize the database class
     print("--- Initializing Database ---")
     db_manager = LeetCodeDB()
 
-    # 2. Insert the problem data
-    print("\n--- Inserting Data ---")
-    db_manager.insert_problem(problem_to_add)
 
-    # Try inserting the same problem again to see the duplicate check
-    db_manager.insert_problem(problem_to_add)
 
     # 3. Get data from the database
     print("\n--- Retrieving Data ---")
-    # By ID
     retrieved_problem = db_manager.get_problem_by_id(1)
     # print("Retrieved by ID:", retrieved_problem)
 
     # By Title
     retrieved_problem_by_title = db_manager.get_problem_by_title_slug("two-sum")
     print(retrieved_problem_by_title)
-    # print("Retrieved by Title:", retrieved_problem_by_title)
-
-    # 4. Delete data from the database
-    print("\n--- Deleting Data ---")
-    db_manager.delete_problem_by_id(1)
-
-    # Verify deletion
-    retrieved_problem_after_delete = db_manager.get_problem_by_id(1)
 
 
     # 5. Close the database connection
