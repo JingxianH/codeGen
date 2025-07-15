@@ -5,13 +5,15 @@ from db_accessor import LeetCodeDB
 from extractor import get_leetcode_question
 from get_questions import GetQuestionsList
 from llm_code_generation import generate_solution_with_deepseek
+from supabase_accessor import SupabaseDB
+
 
 class ProblemScraper:
     """
     A class to scrape LeetCode problems, generate solutions, and store them in a database.
     """
 
-    def __init__(self, num_questions: int = 200):
+    def __init__(self, num_questions: int = 200, local = True):
         """
         Initializes the ProblemScraper with the number of questions to scrape.
 
@@ -20,7 +22,11 @@ class ProblemScraper:
         """
         self.num_questions = num_questions
         self.get_questions_client = GetQuestionsList(self.num_questions)
-        self.db_manager = LeetCodeDB()
+        if local:
+            self.db_manager = LeetCodeDB()
+        else:
+            self.db_manager = SupabaseDB()
+
         pd.set_option('display.max_columns', None)
 
     def scrape_and_store_problems(self):
@@ -49,5 +55,5 @@ class ProblemScraper:
 
 if __name__ == "__main__":
     # Example: Initialize the scraper and run the process
-    problem_scraper = ProblemScraper(200)
+    problem_scraper = ProblemScraper(200, False)
     problem_scraper.scrape_and_store_problems()
