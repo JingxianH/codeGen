@@ -19,9 +19,8 @@ class SupabaseDB:
             supabase_key (str): Your Supabase anon public key.
         """
         # It's best practice to use environment variables for credentials
-        url = supabase_url or "https://mbuiluhrtlgyawlqchaq.supabase.co"
-        key = supabase_key or "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1idWlsdWhydGxneWF3bHFjaGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI0NDg2MzYsImV4cCI6MjA2ODAyNDYzNn0.mRIzUieN7BIWE_DyNT0xm1qINKE_For3Ei66K5HiiSE"
-
+        url = supabase_url or ""
+        key = supabase_key or ""
         if not url or not key:
             raise ValueError("Supabase URL and Key must be provided either as arguments or environment variables.")
 
@@ -114,9 +113,8 @@ if __name__ == '__main__':
     # IMPORTANT:
     # Replace these with your actual Supabase URL and anon key,
     # or set them as environment variables named SUPABASE_URL and SUPABASE_KEY.
-    SUPABASE_URL = "https://mbuiluhrtlgyawlqchaq.supabase.co"
-    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1idWlsdWhydGxneWF3bHFjaGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI0NDg2MzYsImV4cCI6MjA2ODAyNDYzNn0.mRIzUieN7BIWE_DyNT0xm1qINKE_For3Ei66K5HiiSE"
-
+    SUPABASE_URL = "url"
+    SUPABASE_KEY = "key"
     if SUPABASE_URL == "YOUR_SUPABASE_URL" or SUPABASE_KEY == "YOUR_SUPABASE_ANON_KEY":
         print("=" * 50)
         print(
